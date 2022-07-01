@@ -5,6 +5,7 @@
 @import url('fonts/font-styles.css');
 @import url('background-colors.css');
 @import url('heights-and-widths.css');
+@import url('js-elements-style.css');
 
 * {
   margin: 0;
@@ -91,6 +92,16 @@ nav {
   padding-top: 20px;
 }
 
+.game-buttons {
+  padding-top: 20px;
+}
+
+.game-button {
+  margin-right: 25px;
+  padding: 7px 25px;
+  cursor: pointer;
+}
+
 .numbers {
   display: flex;
   flex-wrap: wrap;
@@ -107,10 +118,6 @@ nav {
   font-weight: bold;
   color: white;
   margin: 5px;
-}
-
-.selected-number {
-  background-color: #27C383;
 }
 
 .new-bet-bottom {

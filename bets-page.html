@@ -5,6 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="styles/bets-page-style.css">
+  <script src="js/game.js" defer></script>
+  <script src="/js/dom-handler.js" defer></script>
+  <script src="/js/main.js" defer></script>
   <title>Página de apostas</title>
 </head>
 <body class="backF7F7F7">
@@ -28,37 +31,21 @@
   <div class="sections-container">
     <section class="new-bet">
       <div>
-        <span class="font14rem font707070 bold">NEW BET </span> <span class="font14rem font707070">FOR MEGA-SENA</span>
+        <span class="font14rem font707070 bold">NEW BET </span> <span data-js="game-name" class="font14rem font707070"></span>
       </div>
       <div>
         <p class="font11rem font868686 bold">Choose a game</p>
-        <!--buttons-->
+        <div data-js="game-buttons" class="game-buttons"></div>
       </div>
       <div>
         <p class="font11rem font868686 bold">Fill your bet</p>
-        <p class="font11rem font868686">Mark as many numbers as you want up to a maximum of 50. Win by hitting 15, 16, 17, 18, 19, 20 or none of the 20 numbers drawn.</p>
+        <p data-js="game-description" class="font11rem font868686"></p>
       </div>
-      <div class="numbers">
-        <button class="number">01</button>
-        <button class="number">02</button>
-        <button class="number">03</button>
-        <button class="number">04</button>
-        <button class="number">05</button>
-        <button class="number">06</button>
-        <button class="number">07</button>
-        <button class="number">08</button>
-        <button class="number">09</button>
-        <button class="number">10</button>
-        <button class="number">11</button>
-        <button class="number">12</button>
-        <button class="number">13</button>
-        <button class="number">14</button>
-        <button class="number">15</button>
-      </div>
+      <div data-js="numbers" class="numbers"></div>
       <div class="new-bet-bottom">
         <div>
-          <button class="game-helper">Complete game</button>
-          <button class="game-helper">Clear game</button>
+          <button data-js="complete-game-button" class="game-helper">Complete game</button>
+          <button data-js="clear-game-button" class="game-helper">Clear game</button>
         </div>
         <div>
           <button class="add-cart">
@@ -86,9 +73,9 @@
       </button>
     </section>
   </div>
-  <div class="full-page-width close-to-footer h2 backEBEBEB"></div>
+  <!-- <div class="full-page-width close-to-footer h2 backEBEBEB"></div>
   <footer>
     <span class="font09rem font707070">Copyright 2020 Luby Software</span>
-  </footer>
+  </footer> -->
 </body>
 </html>
