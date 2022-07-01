@@ -4,61 +4,91 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles/bets-page-style.css">
   <title>Página de apostas</title>
 </head>
-<body>
+<body class="backF7F7F7">
   <header>
     <nav>
-      <h1>TGL</h1>
-      <h1>Home</h1>
+      <div class="logo">
+        <a href="#" class="font40rem font707070 bold">TGL</a>
+        <div class="h7 horizontal-bar backB5C401"></div>
+      </div>
+      <a href="#" class="font14rem font707070 bold">Home</a>
     </nav>
     <nav>
-      <h1>Account</h1>
+      <a href="#" class="font14rem font707070 bold">Account</a>
       <div class="logout">
-        <h1>Log out</h1>
+        <a href="#" class="font14rem font707070 bold">Log out</a>
         <img src="icons/arrow_right_gray.png" alt="logout">
       </div>
     </nav>
-    <hr>
   </header>
-  <section>
-    <p>NEW BET</p> <p>FOR MEGA-SENA</p>
-    <div>
-      <p>Choose a game</p>
-      <!--buttons-->
-    </div>
-    <div>
-      <p>Fill your bet</p>
-      <p>Fill your bet Mark as many numbers as you want up to a maximum of 50. Win by hitting 15, 16, 17, 18, 19, 20 or none of the 20 numbers drawn.</p>
-    </div>
-    <div>
-      <!--numbers-->
-    </div>
-    <div>
+  <div class="full-page-width h2 backEBEBEB"></div>
+  <div class="sections-container">
+    <section class="new-bet">
       <div>
-        <!--gamebuttons-->
+        <span class="font14rem font707070 bold">NEW BET </span> <span class="font14rem font707070">FOR MEGA-SENA</span>
       </div>
       <div>
-        <button>
-          <img src="icons/shopping_cart.png" alt="cart">
-          <p>Add to cart</p>
-        </button>
+        <p class="font11rem font868686 bold">Choose a game</p>
+        <!--buttons-->
       </div>
-    </div>
-  </section>
-  <section>
-    <p>CART</p>
-    <div>
-      <!--items-->
-    </div>
-    <p>CART</p> <p>Total</p>
-    <button>
-      <p>Save</p>
-      <img src="icons/arrow_right_green.png" alt="save">
-    </button>
-  </section>
+      <div>
+        <p class="font11rem font868686 bold">Fill your bet</p>
+        <p class="font11rem font868686">Mark as many numbers as you want up to a maximum of 50. Win by hitting 15, 16, 17, 18, 19, 20 or none of the 20 numbers drawn.</p>
+      </div>
+      <div class="numbers">
+        <button class="number">01</button>
+        <button class="number">02</button>
+        <button class="number">03</button>
+        <button class="number">04</button>
+        <button class="number">05</button>
+        <button class="number">06</button>
+        <button class="number">07</button>
+        <button class="number">08</button>
+        <button class="number">09</button>
+        <button class="number">10</button>
+        <button class="number">11</button>
+        <button class="number">12</button>
+        <button class="number">13</button>
+        <button class="number">14</button>
+        <button class="number">15</button>
+      </div>
+      <div class="new-bet-bottom">
+        <div>
+          <button class="game-helper">Complete game</button>
+          <button class="game-helper">Clear game</button>
+        </div>
+        <div>
+          <button class="add-cart">
+            <img src="icons/shopping_cart.png" alt="cart">
+            <p>Add to cart</p>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="cart backFFFFFF">
+      <div class="cart-info">
+        <p class="font16rem font707070 bold">CART</p>
+        <div>
+          <!--items-->
+        </div>
+        <div>
+          <span class="font16rem font707070 bold">CART </span> <span class="font16rem font707070 light normal">Total</span>
+        </div>
+      </div>
+      <button class="save">
+       <div>
+          <p>Save</p>
+          <img src="icons/arrow_right_green.png" alt="save">
+       </div>
+      </button>
+    </section>
+  </div>
+  <div class="full-page-width close-to-footer h2 backEBEBEB"></div>
   <footer>
-    <p>Copyright 2020 Luby Software</p>
+    <span class="font09rem font707070">Copyright 2020 Luby Software</span>
   </footer>
 </body>
 </html>

@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,700&display=swap');
+@import url('fonts/font-colors.css');
+@import url('fonts/font-sizes.css');
+@import url('fonts/font-weights.css');
+@import url('fonts/font-styles.css');
+@import url('background-colors.css');
+@import url('heights-and-widths.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+body {
+  font-style: italic;
+  margin: auto;
+  height: 100%;
+  width: 1280px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logo {
+  align-items: center;
+  margin-right: 75px;
+}
+
+.full-page-width {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.close-to-footer {
+  position: absolute;
+  bottom: 75px;
+}
+
+.horizontal-bar {
+  position: relative;
+  top: 4px;
+  z-index: 1;
+  border-radius: 6px;
+  width: calc(100% + 10px);
+}
+
+.logout {
+  padding-left: 75px;
+  display: flex;
+  align-items: center;
+}
+
+.logout img {
+  padding-left: 5px;
+  padding-top: 3px;
+  height: 1.9rem;
+  width: 1.7rem;
+}
+
+.sections-container {
+  padding-top: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-bet {
+  padding-top: 20px;
+  display: flex;
+  width: 750px;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.new-bet > * {
+  padding-top: 20px;
+}
+
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.number {
+  border-radius: 50%;
+  background-color: #ADC0C4;
+  width: 3.9rem;
+  height: 3.9rem;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  margin: 5px;
+}
+
+.selected-number {
+  background-color: #27C383;
+}
+
+.new-bet-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-helper {
+  background: none;
+  cursor: pointer;
+  padding: 16px;
+  height: 55px;
+  border-radius: 10px;
+  border: 1px solid #27C383;
+  margin-right: 22px;
+  color: #27C383;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.add-cart {
+  display: flex;
+  height: 55px;
+  align-items: center;
+  background-color: #27C383;
+  border: 1px solid #27C383;
+  color: white;
+  cursor: pointer;
+  padding: 16px 35px 16px 30px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.add-cart img {
+  margin-right: 27px;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.cart {
+  width: 350px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #E2E2E2;
+  border-radius: 10px;
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px;
+  height: calc(100% - 96px);
+}
+
+.save {
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #27C383;
+  border: 1px solid #E2E2E2;
+  cursor: pointer;
+  border-radius: 0px 0px 10px 10px;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.save div {
+  display: flex;
+  align-items: center;
+}
+
+.save img {
+  padding: 3px 0px 0px 3px ;
+  height: 2rem;
+  width: 2rem;
+}
+
+footer {
+  width: 1280px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 75px;
+  height: 75px;
+  font-style: normal;
+  position: fixed;
+  bottom: 0;
+}
