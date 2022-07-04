@@ -14,10 +14,14 @@
 
     selectNumber(number) {
       if(!number) return;
-      if(this.numbers.length === this.minMaxNumber) return;
+      if(this.isComplete()) return;
       if(number > this.range) return;
       if(this.numbers.includes(number)) return;
       this.numbers.push(number);
+    }
+
+    isComplete() {
+      return this.numbers.length === this.minMaxNumber;
     }
 
     unselectNumber(number) {
@@ -41,7 +45,7 @@
     }
 
     getNumbersAsStringArray() {
-      this.numbers.sort();
+      this.numbers.sort((a, b) => a-b);
       const numbers = this.numbers.map((number) => {
         if(number < 10) return `0${number}`;
         return `${number}`;

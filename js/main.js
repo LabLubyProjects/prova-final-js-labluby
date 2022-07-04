@@ -79,6 +79,7 @@
     }
 
     completeCurrentGame() {
+      if(this.currentSelectedGame.isComplete()) return;
       this.currentSelectedGame.completeGame();
       const arrayOfSelectedNumbers = this.currentSelectedGame.getNumbersAsStringArray();
       this.numberBalls.forEach((numberBall) => numberBall.classList.remove('selected-number'));
