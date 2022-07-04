@@ -18,6 +18,7 @@
       this.games = this.gamesObject.types.map((type) => new win.Game(type.type, type.description, type.range, type.price, type.min_and_max_number, type.color));
       this.renderGameButtons(this.games);
       this.setGameHelperButtonsListeners();
+      this.setUpCart();
     }
 
     renderGameButtons(games) {
@@ -58,10 +59,20 @@
       win.DOMHandler.replaceParentChildren('[data-js="numbers"]', this.numberBalls);
     }
 
-    numberBallClickHandler(numberBall, game, number) {
-      const isSelected = numberBall.classList.toggle('selected-number');
-      if(isSelected) game.selectNumber(number);
-      else game.unselectNumber(number);
+    numberBallClickHandler(numberBall, game, number, isFromCompleteGame) {
+      // const isSelected = numberBall.classList.toggle('selected-number');
+      // if(isSelected && game.isComplete())
+      // if(isSelected) game.selectNumber(number);
+      // else game.unselectNumber(number);
+      if(numberBall.classList.contains('selected-number')) {
+        game.unselectNumber(number);
+        numberBall.classList.remove('selected-number');
+      }
+      else if(!isFromCompleteGame && game.isComplete()) return;
+      else {
+        game.selectNumber(number);
+        numberBall.classList.add('selected-number');
+      }
     }
 
     setGameHelperButtonsListeners() {
@@ -82,15 +93,35 @@
     completeCurrentGame() {
       if(this.currentSelectedGame.isComplete()) return;
       this.currentSelectedGame.completeGame();
-      const arrayOfSelectedNumbers = this.currentSelectedGame.getNumbersAsStringArray();
+      const arrayOfSelectedNumbers = this.currentSelectedGame.getNumbersAsString();
       this.numberBalls.forEach((numberBall, index) => {
-        if(arrayOfSelectedNumbers.includes(numberBall.textContent)) this.numberBallClickHandler(numberBall, this.currentSelectedGame, index+1);
+        if(arrayOfSelectedNumbers.includes(numberBall.textContent)) this.numberBallClickHandler(numberBall, this.currentSelectedGame, index+1, true);
       });
     }
 
     clearCurrentGame() {
       this.currentSelectedGame.clearGame();
       this.numberBalls.forEach((numberBall) => numberBall.classList.remove('selected-number'));
+    }
+
+    setUpCart() {
+      win.DOMHandler.textReplacer('[data-js="cart-total"]', `${this.cart.calculateTotal()}`);
+      const addToCartButton = win.DOMHandler.getElementByQuerySelector('[data-js="add-cart"]');
+
+      addToCartButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        this.addToCart();
+      });
+    }
+
+    addToCart() {
+      if(!this.cart.canAddToCart(this.currentSelectedGame)) return;
+      console.log("entrei")
+      this.cart.addToCart(this.currentSelectedGame);
+      const cartItemDiv = win.DOMHandler.generateCartItem(this.currentSelectedGame, this.cart);
+      win.DOMHandler.insertIntoParent('[data-js="cart-items"]', cartItemDiv);
+      win.DOMHandler.textReplacer('[data-js="cart-total"]', `${this.cart.calculateTotal()}`);
+      this.clearCurrentGame();
     }
   }
 

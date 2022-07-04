@@ -32,7 +32,7 @@
     }
 
     completeGame() {
-      while(this.numbers.length < this.minMaxNumber) {
+      while(!this.isComplete()) {
         const randomNumber = Math.ceil(Math.random() * this.range);
         this.selectNumber(randomNumber);
       }
@@ -49,13 +49,22 @@
       this.numbers = [];
     }
 
-    getNumbersAsStringArray() {
+    getNumbersAsString() {
       this.numbers.sort((a, b) => a-b);
       const numbers = this.numbers.map((number) => {
         if(number < 10) return `0${number}`;
         return `${number}`;
       });
-      return numbers;
+      return numbers.join(", ");
+    }
+
+    getPriceInBRL() {
+      let priceInBRL = `R$ ${this.price}`.replace('.', ',');
+      if(priceInBRL.indexOf(',') === -1)
+        priceInBRL += ',00'; 
+      else if(priceInBRL.split(',')[1].length === 1)
+        priceInBRL += '0';
+      return priceInBRL;
     }
   }
 
