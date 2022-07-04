@@ -36,12 +36,17 @@
         const randomNumber = Math.ceil(Math.random() * this.range);
         this.selectNumber(randomNumber);
       }
-      console.log(this.numbers)
+    }
+
+    equals(otherGame) {
+      if(this.type !== otherGame.type) return false;
+      for(let i=0; i<this.numbers; i++)
+        if(this.numbers[i] !== otherGame.numbers[i]) return false;
+      return true;
     }
 
     clearGame() {
       this.numbers = [];
-      console.log(this.numbers)
     }
 
     getNumbersAsStringArray() {
@@ -51,12 +56,6 @@
         return `${number}`;
       });
       return numbers;
-    }
-
-    calculateTotal() {
-      const total = this.numbers.length * this.price;
-      const totalInBRL = `R$${total}`.replace('.', ',');
-      return totalInBRL;
     }
   }
 

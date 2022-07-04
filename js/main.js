@@ -1,4 +1,4 @@
-(function(win, doc) {
+(function(win) {
   'use strict';
 
   class Main {
@@ -14,6 +14,7 @@
     }
 
     init() {
+      this.cart = new win.Cart();
       this.games = this.gamesObject.types.map((type) => new win.Game(type.type, type.description, type.range, type.price, type.min_and_max_number, type.color));
       this.renderGameButtons(this.games);
       this.setGameHelperButtonsListeners();
@@ -82,7 +83,6 @@
       if(this.currentSelectedGame.isComplete()) return;
       this.currentSelectedGame.completeGame();
       const arrayOfSelectedNumbers = this.currentSelectedGame.getNumbersAsStringArray();
-      this.numberBalls.forEach((numberBall) => numberBall.classList.remove('selected-number'));
       this.numberBalls.forEach((numberBall, index) => {
         if(arrayOfSelectedNumbers.includes(numberBall.textContent)) this.numberBallClickHandler(numberBall, this.currentSelectedGame, index+1);
       });
