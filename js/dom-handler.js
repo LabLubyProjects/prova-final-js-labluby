@@ -61,6 +61,7 @@
       itemDiv.appendChild(deleteImg);
       itemDiv.appendChild(verticalBar);
       itemDiv.appendChild(rightSideWrapper);
+
       return itemDiv;
     }
 
@@ -92,6 +93,17 @@
       if(!parentQuerySelector && element) return;
       const parent = doc.querySelector(parentQuerySelector);
       parent.appendChild(element);
+    }
+
+    static checkForDivChilds(element) {
+      if(!element) return;
+      return Array.prototype.some.call(element.children, (child) => child.nodeName === 'DIV');
+    }
+
+    static setUpMutationObserver(targetNode, callback, config) {
+      if(!(targetNode && callback && config)) return;
+      const observer = new MutationObserver(callback);
+      observer.observe(targetNode, config);
     }
   }
 

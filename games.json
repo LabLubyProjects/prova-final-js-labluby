@@ -24,6 +24,14 @@
       "price": 2,
       "min_and_max_number": 5,
       "color": "#F79C31"
+    },
+    {
+      "type": "Lotomania",
+      "description": "Escolha 2 números dos 10 disponíveis na lotomania. 5, 4, 3 ou 2 acertos. São seis sorteios semanais e seis chances de ganhar.",
+      "range": 10,
+      "price": 50,
+      "min_and_max_number": 2,
+      "color": "#FF33CE"
     }
   ]
 }

@@ -196,6 +196,10 @@ nav {
   border-radius: 10px;
 }
 
+.hidden {
+  display: none;
+}
+
 .cart-info {
   display: flex;
   flex-direction: column;
@@ -205,11 +209,17 @@ nav {
   height: calc(100% - 96px);
 }
 
+.empty-cart-message {
+  padding: 10px 0px;
+}
+
 .cart-items {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-stretch;
+  align-items: flex-start;
+  overflow-y: auto;
+  max-height: 270px;
 }
 
 .save {

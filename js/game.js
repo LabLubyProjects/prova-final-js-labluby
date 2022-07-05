@@ -24,6 +24,10 @@
       return this.numbers.length === this.minMaxNumber;
     }
 
+    quantityOfMissingNumbers() {
+      return this.minMaxNumber - this.numbers.length;
+    }
+
     unselectNumber(number) {
       if(!number) return;
       if(typeof number !== 'number') number = Number(number);
