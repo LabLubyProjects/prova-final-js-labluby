@@ -85,7 +85,7 @@
     static replaceParentChildren(parentQuerySelector, elements) {
       if(!parentQuerySelector) return;
       const parent = doc.querySelector(parentQuerySelector);
-      parent.replaceChildren(...elements)
+      elements ? parent.replaceChildren(...elements) : parent.replaceChildren();
     }
 
     static insertIntoParent(parentQuerySelector, element) {

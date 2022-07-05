@@ -13,8 +13,8 @@
       this.init()
     }
 
-    init() {
-      this.cart = new win.Cart();
+    init() { 
+      this.cart = new win.Cart(this.gamesObject['min-cart-value']);
       this.games = this.gamesObject.types.map((type) => new win.Game(type.type, type.description, type.range, type.price, type.min_and_max_number, type.color));
       this.renderGameButtons(this.games);
       this.setGameHelperButtonsListeners();
@@ -60,19 +60,22 @@
     }
 
     numberBallClickHandler(numberBall, game, number, isFromCompleteGame) {
-      // const isSelected = numberBall.classList.toggle('selected-number');
-      // if(isSelected && game.isComplete())
-      // if(isSelected) game.selectNumber(number);
-      // else game.unselectNumber(number);
-      if(numberBall.classList.contains('selected-number')) {
-        game.unselectNumber(number);
+      if(game.isComplete() && !isFromCompleteGame) {
         numberBall.classList.remove('selected-number');
+        game.unselectNumber(number);
+        return;
       }
-      else if(!isFromCompleteGame && game.isComplete()) return;
-      else {
-        game.selectNumber(number);
+      else if(game.isComplete() && isFromCompleteGame) {
         numberBall.classList.add('selected-number');
+        game.selectNumber(number);
+        return;
       }
+
+      const isSelected = numberBall.classList.toggle('selected-number');
+      if(isSelected)
+        game.selectNumber(number);
+      else
+        game.unselectNumber(number);
     }
 
     setGameHelperButtonsListeners() {
@@ -107,21 +110,32 @@
     setUpCart() {
       win.DOMHandler.textReplacer('[data-js="cart-total"]', `${this.cart.calculateTotal()}`);
       const addToCartButton = win.DOMHandler.getElementByQuerySelector('[data-js="add-cart"]');
+      const saveCart = win.DOMHandler.getElementByQuerySelector('[data-js="save"]');
 
       addToCartButton.addEventListener('click', (event) => {
         event.preventDefault();
         this.addToCart();
       });
+
+      saveCart.addEventListener('click', (event) => {
+        this.saveCart();
+      });
     }
 
     addToCart() {
-      if(!this.cart.canAddToCart(this.currentSelectedGame)) return;
-      console.log("entrei")
+      if(!this.currentSelectedGame.isComplete()) return;
       this.cart.addToCart(this.currentSelectedGame);
       const cartItemDiv = win.DOMHandler.generateCartItem(this.currentSelectedGame, this.cart);
       win.DOMHandler.insertIntoParent('[data-js="cart-items"]', cartItemDiv);
       win.DOMHandler.textReplacer('[data-js="cart-total"]', `${this.cart.calculateTotal()}`);
       this.clearCurrentGame();
+    }
+
+    saveCart() {
+      if(this.cart.save())
+        win.DOMHandler.replaceParentChildren('[data-js="cart-items"');
+      else 
+        alert(`O valor mínimo do carrinho deve ser ${this.cart.formatAsBRL(this.cart.minValue)}`);
     }
   }
 

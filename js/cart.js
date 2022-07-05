@@ -2,18 +2,9 @@
   'use strict';
 
   class Cart {
-    constructor() {
+    constructor(minValue) {
+      this.minValue = Number(minValue);
       this.bets = [];
-    }
-
-    canAddToCart(game) {
-      if(!game.isComplete()) return false;
-      console.log(this.bets)
-      for(let i=0; i<this.bets.length; i++)
-      {
-        if(game.equals(this.bets[i])) return false;
-      }
-      return true;
     }
     
     addToCart(game) {
@@ -29,15 +20,30 @@
       }
     }
 
+    getTotalAsNumber() {
+      return this.bets.reduce((acc, curr) => acc+curr.price, 0);
+    }
+
+    save() {
+      const totalAsNumber = this.getTotalAsNumber();
+      if(totalAsNumber < this.minValue) return false;
+      this.bets = [];
+      return true;
+    }
+
     calculateTotal() {
       if(this.bets.length === 0) return 'R$ 0,00';
-      const total = this.bets.reduce((acc, curr) => acc+curr.price, 0);
-      let totalInBRL = `R$ ${total}`.replace('.', ',');
-      if(totalInBRL.indexOf(',') === -1)
-        totalInBRL += ',00'; 
-      else if(totalInBRL.split(',')[1].length === 1)
-        totalInBRL += '0';
-      return totalInBRL;
+      const total = this.getTotalAsNumber();
+      return this.formatAsBRL(total);
+    }
+
+    formatAsBRL(number) {
+      let formatedNumber = `R$ ${number}`.replace('.', ',');
+      if(formatedNumber.indexOf(',') === -1)
+        formatedNumber += ',00'; 
+      else if(formatedNumber.split(',')[1].length === 1)
+        formatedNumber += '0';
+      return formatedNumber;
     }
   }
 
